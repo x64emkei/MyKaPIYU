@@ -18,84 +18,88 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const faqData = [
+  // Mock Knowledge Base (Sync with Admin Mock)
+  const faqs = [
     {
-      question: "How do I request a copy of my Transcript of Records (TOR)?",
-      answer: "You can request a copy of your TOR by navigating to the Dashboard, clicking 'File New Concern', and selecting 'Registrar' as the department. Make sure to attach any required clearance forms."
+      question: "How do I request a transcript?",
+      keywords: ["transcript", "tor", "grades", "records"],
+      answer: "You can request your Transcript of Records (TOR) by visiting the University Registrar's office during office hours or submitting an online request via the Academics tab."
     },
     {
-      question: "Where can I register for upcoming university events?",
-      answer: "Navigate to the 'Announcements' page from the sidebar. You will see a list of upcoming events on the right side. If there are slots available, click the 'Register Now' button."
+      question: "What are the enrollment dates?",
+      keywords: ["enrollment", "enroll", "dates", "schedule"],
+      answer: "Enrollment for the upcoming semester begins on December 1st and ends on December 15th. Late enrollment is subject to a fee."
     },
     {
-      question: "What should I do if my grades are not reflecting?",
-      answer: "Wait for 2-3 days after the encoding deadline. If they are still missing, file a concern under the 'Registrar' department and include your course code and professor's name."
-    },
-    {
-      question: "How do I update my profile information?",
-      answer: "Go to 'My Profile' in the sidebar menu. You can update your contact information and upload required documents using the drag-and-drop zone provided."
-    },
-    {
-      question: "Is there a way to track the status of my requests?",
-      answer: "Yes. On your Dashboard, all your filed concerns are displayed as cards. You can see progress bars and status capsules (e.g., Pending, Resolved) indicating their current state."
+      question: "What are the cashier hours?",
+      keywords: ["cashier", "payment", "hours", "tuition"],
+      answer: "The cashier's office is open Monday to Friday, from 8:00 AM to 4:00 PM, with no noon break."
     }
   ];
 
-  const faqContainer = document.getElementById('faqContainer');
-  const searchInput = document.getElementById('faqSearch');
+  const chatMessages = document.getElementById('chatMessages');
+  const chatForm = document.getElementById('chatForm');
+  const chatInput = document.getElementById('chatInput');
+  const suggestionChips = document.querySelectorAll('.suggestion-chip');
 
-  function renderFAQs(query = '') {
-    if (!faqContainer) return;
-    faqContainer.innerHTML = '';
+  function scrollToBottom() {
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
 
-    const filteredData = faqData.filter(item => 
-      item.question.toLowerCase().includes(query.toLowerCase()) || 
-      item.answer.toLowerCase().includes(query.toLowerCase())
-    );
-
-    if (filteredData.length === 0) {
-      faqContainer.innerHTML = `<div class="text-center text-muted w-full py-4">No FAQs match your search.</div>`;
-      return;
+  function addMessage(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `chat-message ${sender}`;
+    
+    let avatarHtml = '';
+    if (sender === 'bot') {
+      avatarHtml = `<div class="message-avatar bot"><i class="fa-solid fa-robot"></i></div>`;
     }
 
-    filteredData.forEach((item, index) => {
-      const faqItem = document.createElement('div');
-      faqItem.className = 'card mb-4';
-      faqItem.style.cursor = 'pointer';
-      
-      faqItem.innerHTML = `
-        <div class="flex justify-between items-center faq-question" style="font-weight: 500; font-size: 1.125rem;">
-          <span>${item.question}</span>
-          <i class="fa-solid fa-chevron-down text-muted transition-icon" style="transition: transform 0.2s;"></i>
-        </div>
-        <div class="faq-answer mt-3 text-muted hidden" style="line-height: 1.6; border-top: 1px solid var(--border-color); padding-top: 1rem;">
-          ${item.answer}
-        </div>
-      `;
-
-      // Add click event for accordion
-      faqItem.addEventListener('click', () => {
-        const answer = faqItem.querySelector('.faq-answer');
-        const icon = faqItem.querySelector('.transition-icon');
-        
-        if (answer.classList.contains('hidden')) {
-          answer.classList.remove('hidden');
-          icon.style.transform = 'rotate(180deg)';
-        } else {
-          answer.classList.add('hidden');
-          icon.style.transform = 'rotate(0deg)';
-        }
-      });
-
-      faqContainer.appendChild(faqItem);
-    });
+    msgDiv.innerHTML = `
+      ${avatarHtml}
+      <div class="message-bubble">${text}</div>
+    `;
+    
+    chatMessages.appendChild(msgDiv);
+    scrollToBottom();
   }
 
-  renderFAQs();
+  function handleBotResponse(userMsg) {
+    const lowerMsg = userMsg.toLowerCase();
+    let foundAnswer = null;
 
-  if(searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      renderFAQs(e.target.value);
-    });
+    for (let faq of faqs) {
+      if (faq.keywords.some(kw => lowerMsg.includes(kw.trim().toLowerCase()))) {
+        foundAnswer = faq.answer;
+        break;
+      }
+    }
+
+    // Typing delay simulation
+    setTimeout(() => {
+      if (foundAnswer) {
+        addMessage(foundAnswer, 'bot');
+      } else {
+        addMessage("I couldn't find an answer to that. Please go to the Services tab to submit a ticket to the relevant department.", 'bot');
+      }
+    }, 800); // 800ms thinking delay
   }
+
+  chatForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    addMessage(text, 'user');
+    chatInput.value = '';
+    handleBotResponse(text);
+  });
+
+  suggestionChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const question = chip.getAttribute('data-question');
+      addMessage(question, 'user');
+      handleBotResponse(question);
+    });
+  });
 });

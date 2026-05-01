@@ -78,6 +78,42 @@
                         <div id="adminConcernsGrid">
                             <!-- Injected by admin.js -->
                         </div>
+
+                        <!-- NEW: Document Requests Kanban -->
+                        <div class="mt-6 pt-4" style="border-top: 1px solid var(--border-color);">
+                            <h2 style="font-size: 1.25rem; margin-bottom: 1rem;"><i class="fa-solid fa-file-lines text-primary mr-2"></i>Document Tracking Kanban</h2>
+                            <div class="kanban-board" id="kanbanBoard">
+                                
+                                <!-- Pending Col -->
+                                <div class="kanban-col drop-zone" data-status="pending">
+                                    <div class="kanban-header">Pending <span class="badge badge-pending">2</span></div>
+                                    <div class="kanban-card" draggable="true" data-id="doc-1">
+                                        <div style="font-weight: 500; font-size: 0.95rem;">Juan Dela Cruz</div>
+                                        <div class="text-muted mt-1" style="font-size: 0.75rem;"><i class="fa-solid fa-file-pdf mr-1"></i>Transcript of Records (TOR)</div>
+                                    </div>
+                                    <div class="kanban-card" draggable="true" data-id="doc-2">
+                                        <div style="font-weight: 500; font-size: 0.95rem;">Maria Clara</div>
+                                        <div class="text-muted mt-1" style="font-size: 0.75rem;"><i class="fa-solid fa-file-pdf mr-1"></i>Certificate of Enrollment</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Processing Col -->
+                                <div class="kanban-col drop-zone" data-status="processing">
+                                    <div class="kanban-header">Processing <span class="badge" style="background-color: var(--primary-color); color: white;">0</span></div>
+                                    <!-- Empty state -->
+                                </div>
+
+                                <!-- Ready Col -->
+                                <div class="kanban-col drop-zone" data-status="ready">
+                                    <div class="kanban-header">Ready <span class="badge" style="background-color: #198754; color: white;">1</span></div>
+                                    <div class="kanban-card" draggable="true" data-id="doc-3">
+                                        <div style="font-weight: 500; font-size: 0.95rem;">Jose Rizal</div>
+                                        <div class="text-muted mt-1" style="font-size: 0.75rem;"><i class="fa-solid fa-file-pdf mr-1"></i>Good Moral Character</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Right: Create Announcement Form -->
@@ -110,7 +146,10 @@
 
     <script src="admin.js"></script>
 <script src="theme.js"></script>
+<script src="notifications.js"></script>
 </body>
 </html>
+
+
 
 

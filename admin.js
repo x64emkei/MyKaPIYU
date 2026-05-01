@@ -118,4 +118,65 @@ document.addEventListener('DOMContentLoaded', () => {
       announcementForm.reset();
     });
   }
+
+  // Kanban Drag and Drop Logic
+  const kanbanCards = document.querySelectorAll('.kanban-card');
+  const dropZones = document.querySelectorAll('.kanban-col.drop-zone');
+
+  kanbanCards.forEach(card => {
+    card.addEventListener('dragstart', () => {
+      card.classList.add('dragging');
+    });
+
+    card.addEventListener('dragend', () => {
+      card.classList.remove('dragging');
+    });
+  });
+
+  dropZones.forEach(zone => {
+    zone.addEventListener('dragover', e => {
+      e.preventDefault();
+      zone.classList.add('drag-over');
+    });
+
+    zone.addEventListener('dragleave', () => {
+      zone.classList.remove('drag-over');
+    });
+
+    zone.addEventListener('drop', e => {
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      
+      const draggingCard = document.querySelector('.dragging');
+      if (draggingCard) {
+        zone.appendChild(draggingCard);
+        
+        // Update badge counts (mock logic)
+        updateKanbanCounts();
+
+        // Mock PUT request
+        const status = zone.getAttribute('data-status');
+        const docId = draggingCard.getAttribute('data-id');
+        
+        console.log(`Mock PUT /api/documents/${docId} - Status: ${status}`);
+        
+        // Simulate fetch
+        fetch('/api/documents/' + docId, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: status })
+        }).catch(() => console.log('Simulated API response for Kanban drop'));
+      }
+    });
+  });
+
+  function updateKanbanCounts() {
+    dropZones.forEach(zone => {
+      const count = zone.querySelectorAll('.kanban-card').length;
+      const badge = zone.querySelector('.kanban-header .badge');
+      if (badge) {
+        badge.textContent = count;
+      }
+    });
+  }
 });

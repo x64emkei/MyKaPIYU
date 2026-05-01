@@ -59,9 +59,7 @@
                 <div class="flex items-center gap-4"><a href="#" class="theme-toggle" style="font-size: 1.25rem;"><i class="fa-solid fa-moon text-muted"></i></a>
                     <a href="#" class="text-muted"><i class="fa-solid fa-envelope mr-2"></i><span style="display:none;" class="hide-mobile">Contact Us</span></a>
                     <style>@media(min-width: 768px){ .hide-mobile { display: inline; } }</style>
-                    <a href="#" class="text-muted" style="position: relative;">
-                        <i class="fa-solid fa-bell" style="font-size: 1.25rem;"></i>
-                    </a>
+                    <a href="#" class="text-muted notification-bell" style="position: relative;"><i class="fa-solid fa-bell" style="font-size: 1.25rem;"></i></a>
                     <a href="index.html" class="btn btn-outline" style="padding: 0.25rem 0.75rem; border-color: transparent;"><i class="fa-solid fa-right-from-bracket text-muted"></i></a>
                 </div>
             </header>
@@ -115,8 +113,45 @@
                         </form>
                     </div>
 
-                    <!-- Documents Upload Section -->
-                    <div class="card" style="flex: 1; min-width: 300px;">
+                    <!-- Right Column: Document Upload & Request Tracker -->
+                    <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 2rem;">
+                        
+                        <!-- Document Request Tracker Card -->
+                        <div class="card">
+                            <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem;">Document Request</h2>
+                            <form id="docRequestForm">
+                                <div class="form-group flex gap-2">
+                                    <select id="docType" class="form-control" required style="flex: 1;">
+                                        <option value="" disabled selected>Select Document Type...</option>
+                                        <option value="tor">Transcript of Records (TOR)</option>
+                                        <option value="coe">Certificate of Enrollment</option>
+                                        <option value="gmc">Good Moral Character</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-primary">Request</button>
+                                </div>
+                            </form>
+
+                            <div id="trackerContainer" style="display: none; margin-top: 1.5rem;">
+                                <h3 style="font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--text-muted);" id="trackerDocTitle">TOR Status:</h3>
+                                <div class="stepper-container">
+                                    <div class="stepper-step active" id="step1">
+                                        <div class="stepper-icon"><i class="fa-solid fa-clock"></i></div>
+                                        <div class="stepper-label">Pending</div>
+                                    </div>
+                                    <div class="stepper-step" id="step2">
+                                        <div class="stepper-icon"><i class="fa-solid fa-spinner"></i></div>
+                                        <div class="stepper-label">Processing</div>
+                                    </div>
+                                    <div class="stepper-step" id="step3">
+                                        <div class="stepper-icon"><i class="fa-solid fa-check"></i></div>
+                                        <div class="stepper-label">Ready</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Documents Upload Section -->
+                        <div class="card">
                         <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem;">My Documents</h2>
                         <p class="text-muted mb-4" style="font-size: 0.875rem;">Upload medical certificates, ID photos, or other clearance forms.</p>
                         
@@ -154,8 +189,11 @@
 
     <script src="profile.js"></script>
 <script src="theme.js"></script>
+<script src="notifications.js"></script>
 </body>
 </html>
+
+
 
 
 

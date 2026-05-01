@@ -104,4 +104,36 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Profile details updated successfully!');
     });
   }
+
+  // Document Request Tracker Logic
+  const docRequestForm = document.getElementById('docRequestForm');
+  const docTypeSelect = document.getElementById('docType');
+  const trackerContainer = document.getElementById('trackerContainer');
+  const trackerDocTitle = document.getElementById('trackerDocTitle');
+  const steps = [
+    document.getElementById('step1'),
+    document.getElementById('step2'),
+    document.getElementById('step3')
+  ];
+
+  if (docRequestForm) {
+    docRequestForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const selectedOption = docTypeSelect.options[docTypeSelect.selectedIndex].text;
+      trackerDocTitle.textContent = selectedOption + " Status:";
+      
+      // Reset steps
+      steps.forEach(step => {
+        step.className = 'stepper-step';
+      });
+      
+      // Set to Pending
+      steps[0].classList.add('active');
+      trackerContainer.style.display = 'block';
+      
+      // Mock alert
+      alert(`Successfully requested: ${selectedOption}. Current status: Pending.`);
+    });
+  }
 });

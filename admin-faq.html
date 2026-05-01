@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Manager - LSPU Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Side Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo-container">
+                <i class="fa-solid fa-graduation-cap"></i> LSPU Portal
+            </div>
+            <nav style="padding: 1rem 0; flex: 1;">
+                <a href="admin.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-border-all"></i></span> Dashboard Overview
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-bullhorn"></i></span> Global Broadcasts
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-users"></i></span> Manage Students
+                </a>
+                <a href="admin-faq.html" class="nav-link active">
+                    <span class="nav-icon"><i class="fa-solid fa-robot"></i></span> FAQ Manager
+                </a>
+            </nav>
+            
+            <div style="padding: 1.5rem; border-top: 1px solid var(--border-color);">
+                <div class="flex items-center gap-2">
+                    <div style="width: 32px; height: 32px; background: #dc3545; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 600;">
+                        AD
+                    </div>
+                    <div>
+                        <div style="font-size: 0.875rem; font-weight: 600;">System Admin</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Administrator</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="flex items-center">
+                    <button class="btn btn-outline" id="mobileMenuToggle" style="margin-right: 1rem; border: none; padding: 0.5rem;">
+                        <i class="fa-solid fa-bars" style="font-size: 1.25rem;"></i>
+                    </button>
+                    <h2 style="font-size: 1.25rem; display: none;" class="desktop-title">Admin Control Panel</h2>
+                    <style>@media(min-width: 992px){ .desktop-title { display: block !important; } #mobileMenuToggle { display: none; } }</style>
+                </div>
+                <div class="flex items-center gap-4"><a href="#" class="theme-toggle" style="font-size: 1.25rem;"><i class="fa-solid fa-moon text-muted"></i></a>
+                    <a href="index.html" class="btn btn-outline" style="padding: 0.25rem 0.75rem; border-color: transparent;"><i class="fa-solid fa-right-from-bracket text-muted"></i></a>
+                </div>
+            </header>
+
+            <!-- Admin Content -->
+            <div class="content-area">
+                <div class="mb-6">
+                    <h1 style="font-size: 1.5rem;">FAQ Knowledge Base Manager</h1>
+                    <p class="text-muted" style="font-size: 0.875rem;">Manage the chatbot responses by defining questions, triggers, and answers.</p>
+                </div>
+
+                <div class="flex" style="flex-wrap: wrap; gap: 2rem;">
+                    
+                    <!-- Left: FAQ Table -->
+                    <div style="flex: 2; min-width: 300px;">
+                        <div class="card" style="padding: 0; overflow: hidden;">
+                            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                                <thead style="background-color: var(--bg-color); border-bottom: 1px solid var(--border-color);">
+                                    <tr>
+                                        <th style="padding: 1rem; font-weight: 600;">Display Question</th>
+                                        <th style="padding: 1rem; font-weight: 600;">Keywords</th>
+                                        <th style="padding: 1rem; font-weight: 600; text-align: right;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="faqTableBody">
+                                    <!-- Injected by admin-faq.js -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Right: Add FAQ Form -->
+                    <div style="flex: 1; min-width: 300px;">
+                        <div class="card" style="border-top: 4px solid var(--primary-color);">
+                            <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-plus mr-2 text-primary"></i>Add New Entry</h2>
+                            
+                            <form id="faqForm">
+                                <div class="form-group">
+                                    <label class="form-label" for="faqQuestion">Display Question</label>
+                                    <input type="text" id="faqQuestion" class="form-control" placeholder="e.g. How do I request a transcript?" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="faqKeywords">Keywords (comma-separated)</label>
+                                    <input type="text" id="faqKeywords" class="form-control" placeholder="transcript, tor, grades" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="faqAnswer">Bot Answer</label>
+                                    <textarea id="faqAnswer" class="form-control" rows="5" placeholder="You can request a transcript by..." required style="resize: vertical;"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block mt-4"><i class="fa-solid fa-save mr-2"></i>Save Entry</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin-faq.js"></script>
+<script src="theme.js"></script>
+<script src="notifications.js"></script>
+</body>
+</html>
+
+
+
+
+
