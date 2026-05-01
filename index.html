@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <!-- Using FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Supabase -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script>
+      const SUPABASE_URL = "https://wohycbuzmdhvvwzwsfui.supabase.co";
+      const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndvaHljYnV6bWRodnZ3endzZnVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc2NTYwODEsImV4cCI6MjA5MzIzMjA4MX0.8QLgOUTg7w_yCQzsGZR2IFvSTFPNKF6tJfl4cnoN8X0";
+      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    </script>
 </head>
 <body>
     <header class="top-header" style="position: absolute; width: 100%; background: transparent; border: none; z-index: 10;">

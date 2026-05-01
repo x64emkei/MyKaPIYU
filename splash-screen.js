@@ -140,12 +140,15 @@ class SplashScreen {
   }
 }
 
-// Initialize splash screen when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
+// Initialize splash screen only on main page (index)
+const isMainPage = window.location.pathname.endsWith("index.html") || window.location.pathname.endsWith("/");
+if (isMainPage) {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      new SplashScreen();
+    });
+  } else {
     new SplashScreen();
-  });
-} else {
-  new SplashScreen();
+  }
 }
 

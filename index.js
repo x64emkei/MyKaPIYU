@@ -1,3 +1,24 @@
+// Supabase helper functions
+async function addItem(title, note) {
+  const { data, error } = await supabase
+    .from("demo_items")
+    .insert([{ title, note }])
+    .select();
+
+  if (error) throw error;
+  return data;
+}
+
+async function loadItems() {
+  const { data, error } = await supabase
+    .from("demo_items")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) throw error;
+  return data;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginForm');
   const registerForm = document.getElementById('registerForm');

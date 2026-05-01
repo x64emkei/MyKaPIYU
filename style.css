@@ -925,11 +925,51 @@ body.basic-mode {
   --shadow-sm: none;
   --shadow-md: none;
   --shadow-lg: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111;
+  background: #fff;
 }
 
 body.basic-mode * {
+  font-family: Arial, Helvetica, sans-serif !important;
   transition: none !important;
   animation: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+body.basic-mode a {
+  color: #0000CC !important;
+  text-decoration: underline;
+}
+
+body.basic-mode h1,
+body.basic-mode h2,
+body.basic-mode h3,
+body.basic-mode h4,
+body.basic-mode h5,
+body.basic-mode h6 {
+  color: #111 !important;
+}
+
+body.basic-mode .top-header {
+  position: static !important;
+  background: #fff !important;
+  border-bottom: 1px solid #999 !important;
+  backdrop-filter: none !important;
+}
+
+body.basic-mode .top-header a,
+body.basic-mode .top-header .logo-container,
+body.basic-mode .top-header i {
+  color: #111 !important;
+}
+
+body.basic-mode .top-header .logo-container {
+  border: 0 !important;
+  padding: 1rem !important;
 }
 
 body.basic-mode .card {
@@ -946,19 +986,20 @@ body.basic-mode .card:hover {
 }
 
 body.basic-mode .btn {
-  background-color: var(--primary-color);
-  color: white;
+  background-color: #fff;
+  color: #111;
   border: 1px solid var(--primary-color);
   padding: 0.5rem 1rem;
   font-weight: normal;
   display: inline-block;
   margin: 0.25rem;
+  border-radius: 0;
 }
 
 body.basic-mode .btn:hover {
-  background-color: white;
+  background-color: #f2f2f2;
   color: var(--primary-color);
-  transform: none;
+  transform: none !important;
 }
 
 body.basic-mode .split-left {
@@ -990,6 +1031,7 @@ body.basic-mode .auth-container {
   box-shadow: none;
   max-width: 100%;
   padding: 1.5rem;
+  border-radius: 0;
 }
 
 body.basic-mode .auth-container::before {
@@ -1002,6 +1044,7 @@ body.basic-mode .form-control {
   font-size: 1rem;
   width: 100%;
   margin-bottom: 0.5rem;
+  border-radius: 0;
 }
 
 body.basic-mode .form-control:focus {
@@ -1034,6 +1077,7 @@ body.basic-mode .suggestion-chip {
   padding: 0.4rem 0.8rem;
   margin: 0.25rem;
   display: inline-block;
+  border-radius: 0;
 }
 
 body.basic-mode .suggestion-chip:hover {
@@ -1146,6 +1190,24 @@ body.basic-mode .drop-zone.dragover {
   border-color: #0000CC;
 }
 
+body.basic-mode .html-mode-toggle {
+  border-radius: 0;
+  background: #fff;
+  color: #111;
+  border: 1px solid #0000CC;
+}
+
+body.basic-mode .html-mode-toggle.active {
+  background: #0000CC;
+  color: #fff;
+}
+
+body.basic-mode .card::before,
+body.basic-mode .auth-container::before,
+body.basic-mode .kanban-card::before {
+  display: none !important;
+}
+
 /* Basic mode - Form styling */
 body.basic-mode .form-group {
   margin-bottom: 1rem;
@@ -1244,6 +1306,50 @@ body.basic-mode .btn-block {
   background-color: var(--primary-color);
   color: white;
   border-color: var(--primary-color);
+}
+
+/* Top loading bar (non-main pages) */
+.page-loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  z-index: 12000;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.page-loading-bar.active {
+  opacity: 1;
+}
+
+.page-loading-bar-indicator {
+  position: absolute;
+  top: 0;
+  left: -35%;
+  width: 35%;
+  height: 100%;
+  background: var(--primary-color);
+}
+
+.page-loading-bar.active .page-loading-bar-indicator {
+  animation: page-loading-indeterminate 1s linear infinite;
+}
+
+body.basic-mode .page-loading-bar-indicator {
+  background: #0000CC;
+}
+
+@keyframes page-loading-indeterminate {
+  0% {
+    left: -35%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 /* Splash Screen */
@@ -1412,6 +1518,11 @@ body.basic-mode .splash-subtext {
   animation: none;
 }
 
+body.basic-mode .splash-screen-content,
+body.basic-mode .splash-mode-label {
+  color: #111;
+}
+
 body.basic-mode .splash-mode-buttons {
   grid-template-columns: 1fr 1fr;
 }
@@ -1421,6 +1532,7 @@ body.basic-mode .splash-mode-btn {
   border: 2px solid #0000CC;
   color: #0000CC;
   animation: none;
+  border-radius: 0;
 }
 
 body.basic-mode .splash-mode-btn:hover {
