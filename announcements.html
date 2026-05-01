@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements & Events - LSPU Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Side Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo-container">
+                <i class="fa-solid fa-graduation-cap"></i> LSPU Portal
+            </div>
+            <nav style="padding: 1rem 0; flex: 1;">
+                <a href="dashboard.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-border-all"></i></span> Dashboard
+                </a>
+                <a href="announcements.html" class="nav-link active">
+                    <span class="nav-icon"><i class="fa-solid fa-bullhorn"></i></span> Announcements
+                </a>
+                <a href="chat.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-circle-question"></i></span> FAQs
+                </a>
+                <a href="profile.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-user"></i></span> My Profile
+                </a>
+                <a href="admin.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-shield-halved"></i></span> Admin Panel
+                </a>
+            </nav>
+            
+            <div style="padding: 1.5rem; border-top: 1px solid var(--border-color);">
+                <div class="flex items-center gap-2">
+                    <div style="width: 32px; height: 32px; background: var(--primary-color); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 600;">
+                        JD
+                    </div>
+                    <div>
+                        <div style="font-size: 0.875rem; font-weight: 600;">Juan Dela Cruz</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Student</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="flex items-center">
+                    <button class="btn btn-outline" id="mobileMenuToggle" style="margin-right: 1rem; border: none; padding: 0.5rem;">
+                        <i class="fa-solid fa-bars" style="font-size: 1.25rem;"></i>
+                    </button>
+                    <h2 style="font-size: 1.25rem; display: none;" class="desktop-title">Announcements</h2>
+                    <style>@media(min-width: 992px){ .desktop-title { display: block !important; } #mobileMenuToggle { display: none; } }</style>
+                </div>
+                <div class="flex items-center gap-4"><a href="#" class="theme-toggle" style="font-size: 1.25rem;"><i class="fa-solid fa-moon text-muted"></i></a>
+                    <a href="#" class="text-muted"><i class="fa-solid fa-envelope mr-2"></i><span style="display:none;" class="hide-mobile">Contact Us</span></a>
+                    <style>@media(min-width: 768px){ .hide-mobile { display: inline; } }</style>
+                    <a href="#" class="text-muted" style="position: relative;">
+                        <i class="fa-solid fa-bell" style="font-size: 1.25rem;"></i>
+                        <span style="position: absolute; top: -5px; right: -5px; background: var(--accent-color); width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--surface-color);"></span>
+                    </a>
+                    <a href="index.html" class="btn btn-outline" style="padding: 0.25rem 0.75rem; border-color: transparent;"><i class="fa-solid fa-right-from-bracket text-muted"></i></a>
+                </div>
+            </header>
+
+            <!-- Announcements Content -->
+            <div class="content-area">
+                <div class="mb-6">
+                    <h1 style="font-size: 1.5rem;">University Updates</h1>
+                    <p class="text-muted" style="font-size: 0.875rem;">Stay informed with the latest news and upcoming events.</p>
+                </div>
+
+                <!-- Featured Carousel -->
+                <div class="mb-6">
+                    <h2 style="font-size: 1.25rem; margin-bottom: 1rem;"><i class="fa-solid fa-star text-accent mr-2"></i>Featured Highlights</h2>
+                    <div class="carousel-container" id="featuredCarousel">
+                        <!-- Injected by announcements.js -->
+                    </div>
+                </div>
+
+                <div class="flex" style="flex-wrap: wrap; gap: 2rem;">
+                    
+                    <!-- Left Column: News Feed -->
+                    <div style="flex: 1; min-width: 300px;">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 style="font-size: 1.25rem;">Latest News</h2>
+                            <button class="btn btn-outline btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;"><i class="fa-solid fa-filter mr-2"></i>Filter</button>
+                        </div>
+                        <div id="announcementsFeed">
+                            <!-- Injected by announcements.js -->
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Events & Registration -->
+                    <div style="width: 100%; max-width: 350px;">
+                        <div class="card bg-surface" style="background-color: var(--surface-color); border-top: 4px solid var(--primary-color);">
+                            <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-calendar-check mr-2 text-primary"></i>Upcoming Events</h2>
+                            
+                            <div id="eventsList">
+                                <!-- Injected by announcements.js -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="announcements.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>
+
+

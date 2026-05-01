@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - LSPU Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Side Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo-container">
+                <i class="fa-solid fa-graduation-cap"></i> LSPU Portal
+            </div>
+            <nav style="padding: 1rem 0; flex: 1;">
+                <a href="dashboard.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-border-all"></i></span> Dashboard
+                </a>
+                <a href="announcements.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-bullhorn"></i></span> Announcements
+                </a>
+                <a href="chat.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-circle-question"></i></span> FAQs
+                </a>
+                <a href="profile.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-user"></i></span> My Profile
+                </a>
+                <a href="admin.html" class="nav-link active">
+                    <span class="nav-icon"><i class="fa-solid fa-shield-halved"></i></span> Admin Panel
+                </a>
+            </nav>
+            
+            <div style="padding: 1.5rem; border-top: 1px solid var(--border-color);">
+                <div class="flex items-center gap-2">
+                    <div style="width: 32px; height: 32px; background: #dc3545; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 600;">
+                        AD
+                    </div>
+                    <div>
+                        <div style="font-size: 0.875rem; font-weight: 600;">System Admin</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Administrator</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="flex items-center">
+                    <button class="btn btn-outline" id="mobileMenuToggle" style="margin-right: 1rem; border: none; padding: 0.5rem;">
+                        <i class="fa-solid fa-bars" style="font-size: 1.25rem;"></i>
+                    </button>
+                    <h2 style="font-size: 1.25rem; display: none;" class="desktop-title">Admin Control Panel</h2>
+                    <style>@media(min-width: 992px){ .desktop-title { display: block !important; } #mobileMenuToggle { display: none; } }</style>
+                </div>
+                <div class="flex items-center gap-4"><a href="#" class="theme-toggle" style="font-size: 1.25rem;"><i class="fa-solid fa-moon text-muted"></i></a>
+                    <a href="index.html" class="btn btn-outline" style="padding: 0.25rem 0.75rem; border-color: transparent;"><i class="fa-solid fa-right-from-bracket text-muted"></i></a>
+                </div>
+            </header>
+
+            <!-- Admin Content -->
+            <div class="content-area">
+                <div class="mb-6">
+                    <h1 style="font-size: 1.5rem;">Global Operations Dashboard</h1>
+                    <p class="text-muted" style="font-size: 0.875rem;">Manage all student concerns and broadcast university-wide announcements.</p>
+                </div>
+
+                <div class="flex" style="flex-wrap: wrap; gap: 2rem;">
+                    
+                    <!-- Left: Global Concerns View -->
+                    <div style="flex: 2; min-width: 300px;">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 style="font-size: 1.25rem;">Recent Student Concerns</h2>
+                            <button class="btn btn-outline btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;"><i class="fa-solid fa-sort mr-2"></i>Sort by Date</button>
+                        </div>
+                        <div id="adminConcernsGrid">
+                            <!-- Injected by admin.js -->
+                        </div>
+                    </div>
+
+                    <!-- Right: Create Announcement Form -->
+                    <div style="flex: 1; min-width: 300px;">
+                        <div class="card" style="background-color: var(--surface-color); border-top: 4px solid var(--accent-color);">
+                            <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-pen-to-square mr-2 text-accent"></i>Publish Announcement</h2>
+                            
+                            <form id="announcementForm">
+                                <div class="form-group">
+                                    <label class="form-label" for="annTitle">Title</label>
+                                    <input type="text" id="annTitle" class="form-control" placeholder="E.g., Class Suspension" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="annContent">Content</label>
+                                    <textarea id="annContent" class="form-control" rows="5" placeholder="Write the full announcement here..." required style="resize: vertical;"></textarea>
+                                </div>
+                                <div class="form-group flex items-center gap-2">
+                                    <input type="checkbox" id="annImportant" style="width: 16px; height: 16px;">
+                                    <label class="form-label mb-0" for="annImportant" style="cursor: pointer;">Mark as Important</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block mt-4"><i class="fa-solid fa-paper-plane mr-2"></i>Post to Feed</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>
+
+

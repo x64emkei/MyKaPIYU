@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - LSPU Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Side Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo-container">
+                <i class="fa-solid fa-graduation-cap"></i> LSPU Portal
+            </div>
+            <nav style="padding: 1rem 0; flex: 1;">
+                <a href="dashboard.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-border-all"></i></span> Dashboard
+                </a>
+                <a href="announcements.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-bullhorn"></i></span> Announcements
+                </a>
+                <a href="chat.html" class="nav-link active">
+                    <span class="nav-icon"><i class="fa-solid fa-circle-question"></i></span> FAQs
+                </a>
+                <a href="profile.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-user"></i></span> My Profile
+                </a>
+                <a href="admin.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-shield-halved"></i></span> Admin Panel
+                </a>
+            </nav>
+            
+            <div style="padding: 1.5rem; border-top: 1px solid var(--border-color);">
+                <div class="flex items-center gap-2">
+                    <div style="width: 32px; height: 32px; background: var(--primary-color); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 600;">
+                        JD
+                    </div>
+                    <div>
+                        <div style="font-size: 0.875rem; font-weight: 600;">Juan Dela Cruz</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Student</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="flex items-center">
+                    <button class="btn btn-outline" id="mobileMenuToggle" style="margin-right: 1rem; border: none; padding: 0.5rem;">
+                        <i class="fa-solid fa-bars" style="font-size: 1.25rem;"></i>
+                    </button>
+                    <h2 style="font-size: 1.25rem; display: none;" class="desktop-title">Frequently Asked Questions</h2>
+                    <style>@media(min-width: 992px){ .desktop-title { display: block !important; } #mobileMenuToggle { display: none; } }</style>
+                </div>
+                <div class="flex items-center gap-4"><a href="#" class="theme-toggle" style="font-size: 1.25rem;"><i class="fa-solid fa-moon text-muted"></i></a>
+                    <a href="#" class="text-muted"><i class="fa-solid fa-envelope mr-2"></i><span style="display:none;" class="hide-mobile">Contact Us</span></a>
+                    <style>@media(min-width: 768px){ .hide-mobile { display: inline; } }</style>
+                    <a href="#" class="text-muted" style="position: relative;">
+                        <i class="fa-solid fa-bell" style="font-size: 1.25rem;"></i>
+                    </a>
+                    <a href="index.html" class="btn btn-outline" style="padding: 0.25rem 0.75rem; border-color: transparent;"><i class="fa-solid fa-right-from-bracket text-muted"></i></a>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content-area flex" style="justify-content: center;">
+                <div style="max-width: 800px; width: 100%;">
+                    
+                    <div class="text-center mb-6 mt-4">
+                        <i class="fa-solid fa-circle-question text-primary mb-4" style="font-size: 3rem;"></i>
+                        <h1 style="font-size: 2rem;">How can we help you?</h1>
+                        <p class="text-muted mt-2">Search our knowledge base or browse common questions below.</p>
+                    </div>
+
+                    <div style="position: relative; margin-bottom: 3rem;">
+                        <i class="fa-solid fa-search text-muted" style="position: absolute; left: 1.5rem; top: 50%; transform: translateY(-50%); font-size: 1.25rem;"></i>
+                        <input type="text" id="faqSearch" class="form-control" placeholder="Search for answers..." style="padding: 1.25rem 1.25rem 1.25rem 3.5rem; font-size: 1.125rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-sm);">
+                    </div>
+
+                    <div id="faqContainer">
+                        <!-- Injected by chat.js -->
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="chat.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - LSPU Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Side Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo-container">
+                <i class="fa-solid fa-graduation-cap"></i> LSPU Portal
+            </div>
+            <nav style="padding: 1rem 0; flex: 1;">
+                <a href="dashboard.html" class="nav-link active">
+                    <span class="nav-icon"><i class="fa-solid fa-border-all"></i></span> Dashboard
+                </a>
+                <a href="announcements.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-bullhorn"></i></span> Announcements
+                </a>
+                <a href="chat.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-circle-question"></i></span> FAQs
+                </a>
+                <a href="profile.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-user"></i></span> My Profile
+                </a>
+                <!-- Admin link only visible to specific roles, keeping it here per requirement -->
+                <a href="admin.html" class="nav-link">
+                    <span class="nav-icon"><i class="fa-solid fa-shield-halved"></i></span> Admin Panel
+                </a>
+            </nav>
+            
+            <div style="padding: 1.5rem; border-top: 1px solid var(--border-color);">
+                <div class="flex items-center gap-2">
+                    <div style="width: 32px; height: 32px; background: var(--primary-color); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 600;">
+                        JD
+                    </div>
+                    <div>
+                        <div style="font-size: 0.875rem; font-weight: 600;">Juan Dela Cruz</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Student</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="flex items-center">
+                    <button class="btn btn-outline" id="mobileMenuToggle" style="margin-right: 1rem; border: none; padding: 0.5rem;" aria-label="Toggle Menu">
+                        <i class="fa-solid fa-bars" style="font-size: 1.25rem;"></i>
+                    </button>
+                    <h2 style="font-size: 1.25rem; display: none;" class="desktop-title">My Dashboard</h2>
+                    <style>@media(min-width: 992px){ .desktop-title { display: block !important; } #mobileMenuToggle { display: none; } }</style>
+                </div>
+                <div class="flex items-center gap-4"><a href="#" class="theme-toggle" style="font-size: 1.25rem;"><i class="fa-solid fa-moon text-muted"></i></a>
+                    <a href="#" class="text-muted"><i class="fa-solid fa-envelope mr-2"></i><span style="display:none;" class="hide-mobile">Contact Us</span></a>
+                    <style>@media(min-width: 768px){ .hide-mobile { display: inline; } }</style>
+                    <a href="#" class="text-muted" style="position: relative;">
+                        <i class="fa-solid fa-bell" style="font-size: 1.25rem;"></i>
+                        <span style="position: absolute; top: -5px; right: -5px; background: var(--accent-color); width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--surface-color);"></span>
+                    </a>
+                    <a href="index.html" class="btn btn-outline" style="padding: 0.25rem 0.75rem; border-color: transparent;"><i class="fa-solid fa-right-from-bracket text-muted"></i></a>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content-area">
+                <div class="flex justify-between items-center mb-6" style="flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <h1 style="font-size: 1.5rem;">My Concerns</h1>
+                        <p class="text-muted" style="font-size: 0.875rem;">Track the status of your requests and issues.</p>
+                    </div>
+                    <button class="btn btn-primary"><i class="fa-solid fa-plus mr-2"></i> File New Concern</button>
+                </div>
+
+                <!-- Filters & Search -->
+                <div class="card mb-6" style="padding: 1rem;">
+                    <div class="flex justify-between items-center" style="flex-wrap: wrap; gap: 1rem;">
+                        <div class="flex gap-2">
+                            <button class="btn btn-primary filter-btn" data-filter="all">All</button>
+                            <button class="btn btn-outline filter-btn" data-filter="pending">Pending</button>
+                            <button class="btn btn-outline filter-btn" data-filter="resolved">Resolved</button>
+                        </div>
+                        <div style="position: relative; width: 100%; max-width: 300px;">
+                            <i class="fa-solid fa-search text-muted" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);"></i>
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search concerns..." style="padding-left: 2rem;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento Grid for Concerns -->
+                <div class="bento-grid" id="concernsGrid">
+                    <!-- Cards injected via dashboard.js -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSPU Student Assistance Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Using FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="top-header" style="position: absolute; width: 100%; background: transparent; border: none; z-index: 10;">
+        <div class="logo-container" style="color: white; border: none;">
+            <i class="fa-solid fa-graduation-cap"></i> LSPU Portal
+        </div>
+        <div style="padding-right: 1.5rem; display: flex; gap: 1rem; align-items: center;"><a href="#" class="theme-toggle" style="color: white; font-size: 1.25rem;"><i class="fa-solid fa-moon"></i></a>
+            <a href="#" style="color: white; font-weight: 500;"><i class="fa-solid fa-envelope mr-2"></i>Contact Us</a>
+        </div>
+    </header>
+
+    <main class="split-screen">
+        <!-- Left Side: Branding -->
+        <section class="split-left">
+            <h1 class="brand-title">Empowering Students.</h1>
+            <p class="brand-subtitle">Your central hub for academic assistance, announcements, and campus event registrations at Laguna State Polytechnic University.</p>
+            
+            <div class="mt-4" style="display: flex; gap: 1rem; opacity: 0.8;">
+                <div class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-accent"></i> Fast Approvals</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-accent"></i> 24/7 AI Support</div>
+            </div>
+        </section>
+
+        <!-- Right Side: Authentication -->
+        <section class="split-right">
+            <div class="auth-container" id="loginForm">
+                <h2 class="mb-2">Welcome Back</h2>
+                <p class="text-muted mb-6">Enter your credentials to access the portal.</p>
+                
+                <form id="formLogin">
+                    <div class="form-group">
+                        <label class="form-label" for="loginEmail">Student Email</label>
+                        <input type="email" id="loginEmail" class="form-control" placeholder="juan.delacruz@lspu.edu.ph" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="flex justify-between items-center">
+                            <label class="form-label mb-0" for="loginPassword">Password</label>
+                            <a href="#" style="font-size: 0.875rem;">Forgot Password?</a>
+                        </div>
+                        <input type="password" id="loginPassword" class="form-control mt-1" placeholder="••••••••" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block mt-4">Login</button>
+                </form>
+
+                <div class="text-center mt-4" style="font-size: 0.875rem;">
+                    Don't have an account? <span class="toggle-link" id="showRegister">Register here</span><br>
+                    <span class="text-muted mt-2 d-block" style="display: block; margin-top: 0.5rem;">Are you an administrator? <a href="admin-login.html" class="toggle-link" style="text-decoration: none;">LSPU Admin Login here</a></span>
+                </div>
+            </div>
+
+            <div class="auth-container hidden" id="registerForm">
+                <h2 class="mb-2">Create Account</h2>
+                <p class="text-muted mb-6">Register with your official student email.</p>
+                
+                <form id="formRegister">
+                    <div class="form-group">
+                        <label class="form-label" for="regName">Full Name</label>
+                        <input type="text" id="regName" class="form-control" placeholder="Juan Dela Cruz" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="regEmail">Student Email</label>
+                        <input type="email" id="regEmail" class="form-control" placeholder="juan.delacruz@lspu.edu.ph" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="regPassword">Password</label>
+                        <input type="password" id="regPassword" class="form-control" placeholder="••••••••" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-accent btn-block mt-4">Register</button>
+                </form>
+
+                <div class="text-center mt-4" style="font-size: 0.875rem;">
+                    Already have an account? <span class="toggle-link" id="showLogin">Login here</span><br>
+                    <span class="text-muted mt-2 d-block" style="display: block; margin-top: 0.5rem;">Are you an administrator? <a href="admin-login.html" class="toggle-link" style="text-decoration: none;">LSPU Admin Login here</a></span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="index.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>
+
+

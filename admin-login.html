@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - LSPU Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="top-header" style="position: absolute; width: 100%; background: transparent; border: none; z-index: 10;">
+        <div class="logo-container" style="color: white; border: none;">
+            <i class="fa-solid fa-graduation-cap"></i> LSPU Admin Portal
+        </div>
+        <div style="padding-right: 1.5rem; display: flex; gap: 1rem; align-items: center;"><a href="#" class="theme-toggle" style="color: white; font-size: 1.25rem;"><i class="fa-solid fa-moon"></i></a>
+            <a href="#" style="color: white; font-weight: 500;"><i class="fa-solid fa-envelope mr-2"></i>Contact IT Support</a>
+        </div>
+    </header>
+
+    <main class="split-screen">
+        <!-- Left Side: Branding -->
+        <section class="split-left" style="background: linear-gradient(135deg, #dc3545 0%, #8b0000 100%);">
+            <h1 class="brand-title" style="color: white;">System Administration.</h1>
+            <p class="brand-subtitle">Secure gateway for managing university concerns and broadcasts.</p>
+        </section>
+
+        <!-- Right Side: Authentication -->
+        <section class="split-right">
+            <div class="auth-container" id="adminLoginForm">
+                <h2 class="mb-2 text-primary">Admin Access</h2>
+                <p class="text-muted mb-6">Enter your administrator credentials.</p>
+                
+                <form id="formAdminLogin">
+                    <div class="form-group">
+                        <label class="form-label" for="adminEmail">Admin Email / Username</label>
+                        <input type="text" id="adminEmail" class="form-control" placeholder="admin@lspu.edu.ph" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label mb-0" for="adminPassword">Password</label>
+                        <input type="password" id="adminPassword" class="form-control mt-1" placeholder="••••••••" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block mt-4" style="background-color: #dc3545;">Admin Login</button>
+                </form>
+
+                <div class="text-center mt-4" style="font-size: 0.875rem;">
+                    Not an admin? <a href="index.html" class="toggle-link" style="text-decoration: none;">Student Login here</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="admin-login.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>
+
+
